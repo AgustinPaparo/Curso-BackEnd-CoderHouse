@@ -53,13 +53,21 @@ class Container {
 	}
 
 	async getAll() {
-		await this.products;
-		try {
-			console.log(this.products + "Funciona getAll()");
-		} catch (err) {
-			console.log(err);
-		}
-	}
+        try {
+            const prods = await this.read() 
+            console.log( prods); 
+        } catch (err) {
+            console.log(err);
+        }
+    }
+	// async getAll() {
+	// 	await this.products;
+	// 	try {
+	// 		console.log(this.products + "Funciona getAll()");
+	// 	} catch (err) {
+	// 		console.log(err);
+	// 	}
+	// }
 
 	async readingFile() {
 		const read = await fs.promises.readFile(this.fileName, "utf-8");
