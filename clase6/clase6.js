@@ -50,7 +50,7 @@ class Container {
 	async getById(id) {
 		const idFounded = await this.products.find(element => element.id === id);
 		try {
-			console.log("se encontró" + idFounded);
+			return("se encontró" + idFounded);
 		} catch (err) {
 			console.log("null" + err);
 		}
@@ -59,7 +59,7 @@ class Container {
 	async getAll() {
         try {
             const prods = await this.read() 
-            console.log( prods); 
+            return( prods); 
         } catch (err) {
             console.log(err);
         }
@@ -114,7 +114,11 @@ productList.save({ title: "buzo", price: 15500, img: "./buzo.webp" });
 productList.save({ title: "parka", price: 36000, img: "./parka.webp" });
 productList.save({ title: "borcego", price: 40000, img: "./borcego.webp" });
 
-app.get('/', async (req , res) => {
+app.get('/', (req,res) =>{
+    res.send('Funciona!!!! ')
+})
+
+app.get('/productos', async (req , res) => {
     const listOfProd = await productList.getAll()
     try{
         res.send(listOfProd) 

@@ -16,8 +16,8 @@
     "price": 36000,
     "img": "./parka.webp",
     "id": 3
-  },
-  {
+  }
+]  {
     "title": "borcego",
     "price": 40000,
     "img": "./borcego.webp",
