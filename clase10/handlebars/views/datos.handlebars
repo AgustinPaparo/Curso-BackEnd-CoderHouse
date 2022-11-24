@@ -1,7 +1,7 @@
-<h1 style="color:blue;">Ingrese datos</h1>
+<h1 class="text-center text-danger">LISTA DE PRODUCTOS</h1>
 
 
-<form action="/productos" method="post">
+<form action="/productos" method="post" class="text-center">
 
     <div class="form-group">
         <label for="nombre"><b>Nombre</b></label>
@@ -18,20 +18,19 @@
         <input id="imagen" class="form-control" type="text" name="imagen">
     </div>
 
-    <button class="btn btn-success mt-3 mb-5">Enviar</button>
+    <button class="btn btn-primary">Enviar</button>
 </form>
 
 
 
-<h2 style="color:crimson;">Historial</h2>
+<h2 style="color:crimson;">PRODUCTOS AGREGADOS</h2>
 
 
 
 {{#if productos }} 
     <div class="table-responsive">
-        <table class="table table-dark">
+        <table class="table table-dark table-striped">
             <tr style="color: yellow;"> <th>Nombre</th> <th>Precio</th> <th>Imagen</th> </tr>
-            {{!-- for (const producto of productos) { --}}
             {{#each productos}}
             <tr>
                 <td>{{nombre}}</td>
@@ -39,7 +38,6 @@
                 <td><img style="width:80px;height:80px"alt="sin imagen"src="{{imagen}}"></td>
             </tr>
             {{/each}}
-            {{!-- }; --}}
         </table>
     </div>
 {{else}} 
