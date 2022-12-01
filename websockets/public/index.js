@@ -30,7 +30,6 @@ socketClient.on("products", async(data)=>{
     console.log(html)
 })
 
-///////////////////////////////////////////////////////
 
 //Chat
 
@@ -40,8 +39,8 @@ socketClient.on("messagesChat", (data) => {
     console.log(data)
     let messages="";
     data.forEach(element => {
-        messages += `<p><span class="author">${element.author}</span>  <span class="date">[${element.date}]</span>
-        : <span class="text">${element.text}</span></p>`
+        messages += `<p><span>${element.author}</span>  <span>[${element.date}]</span>
+        : <span>${element.text}</span></p>`
     });
     chatContainer.innerHTML = messages
 })
@@ -49,14 +48,14 @@ socketClient.on("messagesChat", (data) => {
 //Capturar nombre de usuario
 let user = "";
 Swal.fire({
-    title:"Bienvenido/a",
-    text:"Ingresa tu direccion de mail para continuar",
+    title:"Registresé",
+    text:"Ingrese su email por favor",
     input:"email",
     allowOutsideClick: false
 }).then(response=>{
     console.log(response)
     user = response.value;
-    document.getElementById("username").innerHTML = `<span class="author">Welcome ${user}</span>`;
+    document.getElementById("username").innerHTML = `<span >Hola ${user}!</span>`;
 })
 
 //Enviar un mensaje a server
