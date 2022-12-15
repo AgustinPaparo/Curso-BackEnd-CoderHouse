@@ -1,0 +1,42 @@
+div(class='container')
+    div(class='text-center')     
+        h1(class="text-muted text-primary mb-3") Agregar Productos Nuevos:
+        form(class="col-4 bg-light p-2 border rounded-4 border-danger", style="--bs-border-opacity: .25;", action="/productos", method="post")
+            
+            label(class="form-label", for="title")
+                b Nombre producto:
+            input#title.form-control(class="form-control", type="text", name="title")
+            
+            label(class="form-label", for="price")
+                b Precio: 
+            input#price.form-control(class="form-control", type="text", name="price")
+            
+            label(class="form-label", for="thumbnail")
+                b Url de imagen:
+            input#thumbnail.form-control(class="form-control", type="text", name="thumbnail")
+            button.btn.btn-primary.my-2 Enviar
+
+
+        h2(class="text-muted text-center text-primary mb-3") Listado de Productos
+        if productos && productos.length > 0
+            div(class="container")
+                table.table.table-dark.table-stripped.text-center
+                    tr(style="color: yellow;")
+                        th Producto
+                        th Precio
+                        th Imagen
+                    each val in productos
+                        tr
+                            td= val.title
+                            td= val.price
+                            td= val.thumbnail
+        else
+            h3(class="alert alert-danger") No hay productos cargados
+        h4(class="text-danger text-center") Deja tu comentario 
+        div(id="messages" class="col-4 text-center")
+        form(onsubmit='return addMessage()' )
+            input#username(type='text' placeholder='Tu nombre' class="fw-bold")
+            br
+            input#text(type='text' placeholder='Comentario' class=" col-6 my-2")
+            br
+            input(type='submit' value='Comentar' class="btn btn-primary ")
