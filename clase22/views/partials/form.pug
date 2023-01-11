@@ -1,0 +1,63 @@
+div(class='container.mt-3')
+    div(class='text-center')     
+        h1(class="text-muted text-primary mb-3") Agregar Productos Nuevos:
+        form(class="col-4 bg-light p-2 border rounded-4 border-danger", style="--bs-border-opacity: .25;", action="/productos", method="post")
+            
+                label(class="form-label", for="nombre")
+                    b Nombre producto:
+                input#nombre.form-control(class="form-control", type="text", name="nombre")
+            
+                label(class="form-label", for="descripcion")
+                    b Descripcion
+                input#descripcion.form-control(class="form-control", type="text", name="descripcion")
+            
+                label(class="form-label", for="codigo")
+                    b Codigo
+                input#codigo.form-control(class="form-control", type="text", name="codigo")
+            
+                label(class="form-label", for="precio")
+                    b Precio
+                input#precio.form-control(class="form-control", type="number", name="precio")
+            
+                label(class="form-label", for="stock")
+                    b Stock
+                input#stock.form-control(class="form-control", type="number", name="stock")
+            
+                label(class="form-label", for="foto")
+                    b Foto
+                input#foto.form-control(class="form-control", type="text", name="foto")
+                button.btn.btn-primary.my-2 Enviar
+
+            
+        h2(class="text-muted text-center text-primary mb-3") Listado de Productos
+        if productos && productos.length > 0
+            div(class="container")
+                table.table.table-dark.table-stripped.text-center
+                    tr(style="color: yellow;")
+                        th Nombre
+                        th Descripcion
+                        th Codigo
+                        th Precio
+                        th Stock
+                        th Foto
+                    each val in productos
+                        tr
+                            td= val.nombre
+                            td= val.descripcion
+                            td= val.codigo
+                            td= val.precio
+                            td= val.stock
+                            td= val.foto
+        else
+            h3(class="alert alert-danger") No hay productos cargados
+        h4(class="text-danger text-center") Deja tu comentario
+        div(id="messages" class="col-4 text-center")
+        form(onsubmit='return addMessage()')
+            input#nombreChat.form-control(type='text' placeholder='Tu nombre')
+            input#apellido.form-control(type='text' placeholder='Tu apellido')
+            input#email.form-control(type='email' placeholder='Tu email')
+            input#alias.form-control(type='text' placeholder='Tu alias')
+            input#avatar.form-control(type='text' placeholder='Tu avatar')
+            input#edad.form-control(type='number' placeholder='Tu edad')
+            input#text.form-control(type='text' placeholder='Cuentanos algo...')
+            input.btn.btn-success.mt-3.mb-5(type='submit' value='Enviar') 
